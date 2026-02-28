@@ -1,0 +1,25 @@
+from __future__ import annotations
+
+LOCAL_REFERENCE_DB = {
+    "fees_2026": {
+        "48_pages": {
+            "5_years": {"regular": 4025, "express": 6325, "super_express": 8625},
+            "10_years": {"regular": 5750, "express": 8050, "super_express": 10350},
+        },
+        "64_pages": {
+            "5_years": {"regular": 6325, "express": 8625, "super_express": 12075},
+            "10_years": {"regular": 8050, "express": 10350, "super_express": 13800},
+        },
+    },
+    "required_docs": {
+        "adult": ["NID Card", "Application Summary", "Payment Slip"],
+        "minor_under_18": ["Birth Registration (English)", "Parents NID", "3R Photo"],
+        "government_staff": ["NOC (No Objection Certificate)", "GO/Office Order Copy"],
+        "private_sector": ["Profession Proof"],
+        "student": ["Student ID / Enrollment Certificate"],
+        "business_owner": ["Trade License / Business Proof"],
+        "name_change": ["Marriage Certificate or Affidavit for Name Change"],
+    },
+}
+
+VAT_RATE = 0.15

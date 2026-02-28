@@ -1,0 +1,95 @@
+📌 Project Overview
+Navigating the Bangladesh E-Passport Portal can be overwhelming due to varying rules for age, professions, and delivery types. Your task is to build a Multi-Agent System (MAS) using CrewAI that acts as a "Virtual Consular Officer."
+
+The system should take a user's profile (Age, Profession, Urgency) and output a comprehensive Passport Readiness Report in both English and Bangla.
+
+🤖 The Crew Definition
+You must implement a minimum of three specialized agents:
+
+1. The Policy Guardian (Eligibility Agent)
+Role: Bangladesh Passport Policy Expert
+
+Goal: Determine the permitted validity (5 vs 10 years) and required identification (NID vs Birth Registration) based on the applicant's age.
+
+Context: Remember, applicants under 18 or over 65 have specific restrictions!
+
+2. The Chancellor of the Exchequer (Fee Calculator)
+Role: Financial Auditor
+
+Goal: Calculate the exact BDT fee including 15% VAT based on:
+
+Page Count (48 vs 64 pages)
+
+Delivery Speed (Regular, Express, or Super Express)
+
+Constraint: Use the 2026 official fee structure.
+
+3. The Document Architect (Checklist Specialist)
+Role: Documentation Officer
+
+Goal: Generate a customized checklist (e.g., GO/NOC for Govt employees, Marriage Certificate for name changes, or Parent's NID for minors).
+
+🛠️ Technical Requirements
+To complete this assignment, your Python script must demonstrate:
+
+Agent Persona Design: Use descriptive backstory and goal attributes.
+
+Task Delegation: Pass the output of the Policy Guardian to the Fee Calculator as context.
+
+Output: The final result must be formatted as a Markdown Table in English.
+
+Error Handling: What happens if a 15-year-old asks for a 10-year passport? Your agents should "flag" this inconsistency.
+
+Fallback: If the agent fails to scrap data, it should fallback to a local database containing general information.. 
+
+📝 Example Input Scenario
+"I am a 24-year-old private sector employee. I need a 64-page passport urgently because I have a business trip in two weeks. I have an NID and I live in Dhaka."
+
+Expected Output Format:
+Validity: 10 Years
+
+Delivery Type: Express
+
+Total Fee: [Amount] BDT
+
+Documents Needed: NID, Profession Proof, Application Summary.
+
+Pro-Tip: Use the verbose=True setting so you can see your agents "thinking" in the terminal. It makes debugging much easier!
+
+
+
+	Example Local DB:
+	{
+
+  "fees_2026": {
+
+    "48_pages": {
+
+      "5_years": {"regular": 4025, "express": 6325, "super_express": 8625},
+
+      "10_years": {"regular": 5750, "express": 8050, "super_express": 10350}
+
+    },
+
+    "64_pages": {
+
+      "5_years": {"regular": 6325, "express": 8625, "super_express": 12075},
+
+      "10_years": {"regular": 8050, "express": 10350, "super_express": 13800}
+
+    }
+
+  },
+
+  "required_docs": {
+
+    "adult": ["NID Card", "Application Summary", "Payment Slip"],
+
+    "minor_under_18": ["Birth Registration (English)", "Parents NID", "3R Photo"],
+
+    "government_staff": ["NOC (No Objection Certificate)", "NID"]
+
+  }
+
+}
+
