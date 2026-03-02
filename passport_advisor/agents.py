@@ -167,7 +167,7 @@ class DocumentArchitect:
 
 
 class CrewAIOrchestrator:
-    """Optional CrewAI enrichment layer.
+    """CrewAI enrichment layer.
 
     The business decision stays deterministic. CrewAI is used only to provide an
     additional multi-agent reasoning trace when dependencies and credentials exist.
