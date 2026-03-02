@@ -138,3 +138,7 @@ curl -X POST http://localhost:8000/passport/parse \
 - `.env` is ignored by git
 - `.env-example` is the committed template
 - CrewAI telemetry is disabled by default to avoid signal-handler warnings in the API container
+
+## Demo Video
+
+(Demo Video: Bangladesh Passport Virtual Consular Officer) [https://www.youtube.com/watch?v=4cAFQjDNTtM]
