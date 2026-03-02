@@ -4,4 +4,4 @@ streamlit
 requests
 pydantic
 crewai
-litellm
+litellm[proxy]

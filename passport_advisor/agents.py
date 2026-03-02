@@ -182,20 +182,23 @@ class CrewAIOrchestrator:
         fees: FeeBreakdown,
         checklist: ChecklistResult,
     ) -> CrewExecution:
-        try:
-            from crewai import Agent, Crew, LLM, Process, Task
-        except ImportError:
-            return CrewExecution(
-                status="skipped",
-                notes="CrewAI is not installed. Used the local rule engine and fallback database.",
-            )
-
         if not self._has_llm_credentials():
             return CrewExecution(
                 status="skipped",
                 notes=(
                     "CrewAI is enabled but no LLM API key is configured. "
                     "Used the local rule engine and fallback database."
+                ),
+            )
+
+        try:
+            from crewai import Agent, Crew, LLM, Process, Task
+        except ImportError as exc:
+            return CrewExecution(
+                status="skipped",
+                notes=(
+                    "CrewAI could not be imported. Used the local rule engine and "
+                    f"fallback database. Details: {exc}"
                 ),
             )
 
